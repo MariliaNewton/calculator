@@ -17,6 +17,7 @@ keysContainer.addEventListener("click", function (e) {
 
   if (key.classList.contains("numbers")) {
     if (cleanDisplay) clearDisplay();
+    if (display.textContent.split("").length > 14) return;
     if (display.textContent === "0") display.textContent = "";
     if (hasPointKey(display.textContent) && key.textContent === ".") return;
     displayNumber(key.textContent);
@@ -40,6 +41,7 @@ keysContainer.addEventListener("click", function (e) {
 window.addEventListener("keydown", function (e) {
   if ((e.key >= "0" && e.key <= "9") || e.key === ".") {
     if (cleanDisplay) clearDisplay();
+    if (display.textContent.split("").length > 14) return;
     if (display.textContent === "0") display.textContent = "";
     if (hasPointKey(display.textContent) && e.key === ".") return;
     displayNumber(e.key);
@@ -77,7 +79,11 @@ function evaluate() {
   if (curOperator === "*") curOperator = "x";
   numberTwo = display.textContent;
   subDisplay.textContent = `${numberOne} ${curOperator} ${numberTwo} =`;
-  display.textContent = operate(numberOne, numberTwo, curOperator);
+
+  let result = operate(numberOne, numberTwo, curOperator);
+  if (result.toString().length > 14)
+    display.textContent = result.toExponential(8);
+  else display.textContent = result;
   numberTwo = "";
   curOperator = null;
 }
