@@ -141,12 +141,14 @@ button {
   box-shadow: 0rem 0rem 1rem 0.1rem var(--pale-dogwood-dark);
 }
 
-.numbers-container .operators:hover {
+.numbers-container .operators:hover,
+.numbers-container .equal:hover {
   transform: scale(0.9);
   box-shadow: 0rem 0rem 0.5rem 0.01rem var(--lavender);
 }
 
-.numbers-container .operators:active {
+.numbers-container .operators:active,
+.numbers-container .equal:active {
   transform: scale(0.8);
   box-shadow: 0rem 0rem 1rem 0.1rem var(--lavender);
 }
@@ -155,6 +157,7 @@ button.numbers {
   background-color: var(--pale-dogwood);
 }
 
-button.operators {
+button.operators,
+button.equal {
   background-color: var(--lavender);
 }
